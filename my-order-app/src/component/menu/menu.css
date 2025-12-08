@@ -1,0 +1,11 @@
+
+.coffee{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:5px;
+}
+input{
+    margin-top: 5rem;
+    width: 35rem;
+    height: 2rem;
+}

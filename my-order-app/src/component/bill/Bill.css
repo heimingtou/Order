@@ -1,0 +1,9 @@
+.contain-bill{
+    background-color: rgb(187, 166, 207);
+    width: 15rem;
+    height: fit-content;
+    padding-bottom: 5px;
+}
+.btn-a{
+    padding: 1px;
+}
