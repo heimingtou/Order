@@ -1,0 +1,7 @@
+.button-containt{
+    display: flex;
+    gap:20px;
+}
+.count{
+    color: #4B4453;
+}

@@ -38,11 +38,13 @@ export default function ListBill({drink,removeDrink, addPrice }:listBillProp){
                 padding:"0 15px"
             }
         }>
-             <button className='btn-a' onClick={addCount}>+</button>
-            <button className='btn-a' onClick={subCount}>-</button>
+            <div className='button-containt'>
+                <button className='btn-a' onClick={addCount}>+</button>
+                <button className='btn-d' onClick={subCount}>-</button>
+            </div>
             <span>{drink.name}</span>
             <span>{drink.price}</span>
-            <span>{count}</span>
+            <span className='count'>{count}</span>
         </div>
     )
 }

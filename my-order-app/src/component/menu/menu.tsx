@@ -50,7 +50,7 @@ export default function Menu({addDrink,addPrice}:menuProp){
 
     return (
         <>
-        <input type="text" onChange={(e)=>{setText(e.target.value)}}></input>
+        <input placeholder="search drink" type="text" onChange={(e)=>{setText(e.target.value)}}></input>
         < div id="coffee">
             <h1>Coffe</h1>
             <div className="coffee">

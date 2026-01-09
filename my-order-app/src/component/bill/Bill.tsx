@@ -25,7 +25,7 @@ export default function Bill({listDrink,removeDrink,addPrice, totalBill}:listBil
   
     return(
         <div className='contain-bill'>
-            <h1> Bill</h1>
+            <h1 className='title-Bill'> Poem Coffee</h1>
             {listBill}
             <div  style={
             {
@@ -36,8 +36,15 @@ export default function Bill({listDrink,removeDrink,addPrice, totalBill}:listBil
                 padding:"0 15px"
             }
         } >
-            <span>total</span>
-            <span>{totalBill}</span>
+            <span style={
+            {
+                color:"#4B4453"
+            }} ><b>Total</b></span>
+            <span
+                style={{
+                    color:"#ee5b12ff"
+                }}
+            >{totalBill}</span>
             </div>
            
         </div>
