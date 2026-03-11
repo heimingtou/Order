@@ -4,20 +4,22 @@ import './Bill.css'
 type billProp={
     id:string
     name:string
-    price:number
+    price:number,
+    quantity: number
 }
 type listBillProp={
     listDrink: billProp[]
     removeDrink:(value:billProp)=>void
     addPrice:(value:number)=>void
     totalBill:number
+    addDrink: (value: billProp)=>void
 }
 
-export default function Bill({listDrink,removeDrink,addPrice, totalBill}:listBillProp){
+export default function Bill({listDrink,removeDrink,addPrice, totalBill, addDrink}:listBillProp){
     
     const listBill=listDrink.map((drink)=>(
         <div key={drink.id} >     
-            <ListBill drink={drink} removeDrink={removeDrink} addPrice={addPrice}/>
+            <ListBill drink={drink} removeDrink={removeDrink} addPrice={addPrice} addDrink={addDrink}/>
             <hr/>
         </div> 
     )
@@ -38,7 +40,7 @@ export default function Bill({listDrink,removeDrink,addPrice, totalBill}:listBil
         } >
             <span style={
             {
-                color:"#4B4453"
+                color:"#a880d5ff"
             }} ><b>Total</b></span>
             <span
                 style={{

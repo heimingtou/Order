@@ -1,32 +1,31 @@
-import { useState } from 'react'
+//import { useState } from 'react'
 import './listBill.css'
  type drink={
     
         id:string,
         name:string,
-        price: number
-    
-        
+        price: number,
+        quantity: number
     }
     type listBillProp={
         drink:drink
         removeDrink:(value:drink)=>void
         addPrice:(value:number)=>void
+        addDrink: (value: drink)=>void
     }
 
-export default function ListBill({drink,removeDrink, addPrice }:listBillProp){
-   const [count,setCount]=useState(1)
+export default function ListBill({drink,removeDrink, addPrice, addDrink }:listBillProp){
+   //const [count,setCount]=useState(1)
     function addCount(){
-        setCount(count+1);
+        addDrink(drink);
         addPrice(drink.price)
     }
      function subCount(){
-        let fakeCount=count;
-        fakeCount--;
-        setCount(fakeCount);
+        //drink.quantity--;
+        
         addPrice(-1*drink.price)
-        if(fakeCount<1)
-            removeDrink(drink)
+        //let fakeCount=drink.quantity;
+        removeDrink(drink)
     }
     return (
         <div style={
@@ -44,7 +43,7 @@ export default function ListBill({drink,removeDrink, addPrice }:listBillProp){
             </div>
             <span>{drink.name}</span>
             <span>{drink.price}</span>
-            <span className='count'>{count}</span>
+            <span className='count'>{drink.quantity}</span>
         </div>
     )
 }

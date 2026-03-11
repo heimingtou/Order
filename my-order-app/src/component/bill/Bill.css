@@ -2,8 +2,8 @@
     position: fixed;
     top: 5rem;
     right: 5rem;
-    background-color: #E5D9D3;
-    color: #2D283E;
+    background-color: #2A2438;
+    color: #B0A8B9;
     width: 20rem;
     height: fit-content;
     padding-bottom: 5px;
@@ -28,7 +28,7 @@
 .title-Bill{
     margin: 5px;
     padding-bottom: 15px;
-    color: #4B4453;
+    color: #bfb6c9;
     font-size: 2.5rem;
     font-family:'Times New Roman', Times, serif;
 }

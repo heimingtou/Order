@@ -84,7 +84,6 @@ export default function Menu({addDrink,addPrice}:menuProp){
             <div className="coffee">
             {listSpecial}
             </div>
-           
         </div>
 
         </>

@@ -1,8 +1,8 @@
 .menuCoffee{
     width: 13rem;
     height: fit-content;
-    background-color: #D3C4BE;
-    color: #2C2C2C;
+    background-color: #3D3644;
+    color: #B0A8B9;
     font-size: 20px;
     font-family: serif;
     border-radius: 8px;
@@ -14,4 +14,5 @@
     height: 2rem;
     background-color: #9B89B3;
     margin-bottom: 10px;
+
 }
