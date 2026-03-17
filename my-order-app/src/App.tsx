@@ -2,7 +2,7 @@ import Navbar from './component/navbar/nav'
 import Menu from './component/menu/menu'
 import Bill from './component/bill/Bill'
 import './App.css'
-import { useReducer, useState} from 'react'
+import { useReducer} from 'react'
 type drink={
     id:string
     name:string;
@@ -24,7 +24,7 @@ type Action =
   | { type: "CLEAR" };                           // xóa toàn bộ
 
 function App() {
-  const [totalBill,setTotalBill]=useState(0);
+  //const [totalBill,setTotalBill]=useState(0);
   //const[listBill,setBill]=useState<billProp[]>([]);
   function addDrink(drink: drink) {
     const billItem: billProp = { ...drink, quantity: 1 };
@@ -71,17 +71,18 @@ function App() {
   }
 }
   const [listBillReducer,dispatch]=useReducer(reducer,[])
-  function total(price:number){
-    setTotalBill(totalBill+price);
-   }
+  const totalBill= listBillReducer.reduce((sum,item)=>sum=sum+item.price*item.quantity,0);
+  // function total(price:number){
+  //   setTotalBill(totalBill+price);
+  //  }
   return (
     <>
     <section className='navv'>
       <Navbar/>
     </section>
      <section className='contain'>
-      <div><Menu addDrink={addDrink} addPrice={total}/></div>
-      <div><Bill listDrink={listBillReducer} removeDrink={subDrink} addPrice={total} totalBill={totalBill} addDrink={addDrink}   /></div>
+      <div><Menu addDrink={addDrink} /></div>
+      <div><Bill listDrink={listBillReducer} removeDrink={subDrink} totalBill={totalBill} addDrink={addDrink}   /></div>
       
      </section>
      

@@ -10,20 +10,20 @@ import './listBill.css'
     type listBillProp={
         drink:drink
         removeDrink:(value:drink)=>void
-        addPrice:(value:number)=>void
+        //addPrice:(value:number)=>void
         addDrink: (value: drink)=>void
     }
 
-export default function ListBill({drink,removeDrink, addPrice, addDrink }:listBillProp){
+export default function ListBill({drink,removeDrink, addDrink }:listBillProp){
    //const [count,setCount]=useState(1)
     function addCount(){
         addDrink(drink);
-        addPrice(drink.price)
+        //addPrice(drink.price)
     }
      function subCount(){
         //drink.quantity--;
         
-        addPrice(-1*drink.price)
+       // addPrice(-1*drink.price)
         //let fakeCount=drink.quantity;
         removeDrink(drink)
     }

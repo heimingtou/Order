@@ -16,35 +16,35 @@ type drink={
 
 type menuProp={
     addDrink:(value:drink)=>void,
-    addPrice:(value:number)=>void
+    //addPrice:(value:number)=>void
 
 }
-export default function Menu({addDrink,addPrice}:menuProp){
+export default function Menu({addDrink}:menuProp){
     const [text,setText]=useState('');
     const listCoffe=coffee.map((myMenu,index)=>{
          if(myMenu.name.toLowerCase().indexOf(text.toLowerCase())==-1)
             return;
-        return <Drink key={index} menu={myMenu} addDrink={addDrink} addPrice={addPrice} />
+        return <Drink key={index} menu={myMenu} addDrink={addDrink}  />
     })
     const listJuice=juice.map((myMenu,index)=>{
          if(myMenu.name.toLowerCase().indexOf(text.toLowerCase())==-1)
             return;
-        return <Drink key={index} menu={myMenu} addDrink={addDrink} addPrice={addPrice}/>
+        return <Drink key={index} menu={myMenu} addDrink={addDrink}/>
     })
     const listEsspresso=esspresso.map((myMenu,index)=>{
          if(myMenu.name.toLowerCase().indexOf(text.toLowerCase())==-1)
             return;
-        return <Drink key={index} menu={myMenu} addDrink={addDrink} addPrice={addPrice}/>
+        return <Drink key={index} menu={myMenu} addDrink={addDrink} />
     })
     const listMilktea=milkTea.map((myMenu,index)=>{
          if(myMenu.name.toLowerCase().indexOf(text.toLowerCase())==-1)
             return;
-        return <Drink key={index} menu={myMenu} addDrink={addDrink} addPrice={addPrice}/>
+        return <Drink key={index} menu={myMenu} addDrink={addDrink} />
     })
     const listSpecial=special.map((myMenu,index)=>{
          if(myMenu.name.toLowerCase().indexOf(text.toLowerCase())==-1)
             return;
-        return <Drink key={index} menu={myMenu} addDrink={addDrink} addPrice={addPrice}/>
+        return <Drink key={index} menu={myMenu} addDrink={addDrink}/>
     })
     
 

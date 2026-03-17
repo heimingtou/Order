@@ -10,16 +10,16 @@ type billProp={
 type listBillProp={
     listDrink: billProp[]
     removeDrink:(value:billProp)=>void
-    addPrice:(value:number)=>void
+    //addPrice:(value:number)=>void
     totalBill:number
     addDrink: (value: billProp)=>void
 }
 
-export default function Bill({listDrink,removeDrink,addPrice, totalBill, addDrink}:listBillProp){
+export default function Bill({listDrink,removeDrink,totalBill, addDrink}:listBillProp){
     
     const listBill=listDrink.map((drink)=>(
         <div key={drink.id} >     
-            <ListBill drink={drink} removeDrink={removeDrink} addPrice={addPrice} addDrink={addDrink}/>
+            <ListBill drink={drink} removeDrink={removeDrink} addDrink={addDrink}/>
             <hr/>
         </div> 
     )

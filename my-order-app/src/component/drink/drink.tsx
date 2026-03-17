@@ -7,13 +7,13 @@ type drink={
 type drinkProp={
     addDrink:(value:drink)=>void,
     menu:drink
-    addPrice:(value:number)=>void
+    //addPrice:(value:number)=>void
 }
 
-export default function Drink({menu, addDrink, addPrice}:drinkProp){
+export default function Drink({menu, addDrink}:drinkProp){
     function add(){
         addDrink(menu)
-        addPrice(menu.price)
+        //addPrice(menu.price)
     }
 
     return(
