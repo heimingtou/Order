@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import { createContext, useReducer, type ReactNode } from "react";
+import { createContext, useEffect, useReducer, type ReactNode } from "react";
 //import ListBill from "../component/listBill/listBill";
 
 
@@ -29,7 +29,10 @@ type Action =
   | { type: "CLEAR" };    
 
 export const CartContext = createContext<CartContextType | undefined>(undefined)
-
+const initializer = () => {
+  const localData = localStorage.getItem("cart_data");
+  return localData ? JSON.parse(localData) : []; // Nếu có dữ liệu cũ thì dùng, không thì rỗng
+};
 export function CartProvider({children}:{children:ReactNode}){
     function addDrink(drink: drink) {
     const billItem: billProp = { ...drink, quantity: 1 };
@@ -75,7 +78,13 @@ export function CartProvider({children}:{children:ReactNode}){
       return listBillReducer;
   }
 }
-    const [listBillReducer,dispatch]=useReducer(reducer,[])
+    const [listBillReducer,dispatch]=useReducer(reducer,[], initializer)
+    useEffect(() => {
+    // Chuyển mảng giỏ hàng thành chuỗi JSON và lưu vào LocalStorage
+    localStorage.setItem("cart_data", JSON.stringify(listBillReducer));
+    
+    console.log("Đã cập nhật giỏ hàng vào bộ nhớ!");
+  }, [listBillReducer]);
       const totalBill= listBillReducer.reduce((sum,item)=>sum=sum+item.price*item.quantity,0);
     return (
         <CartContext.Provider value={{listBillReducer,addDrink, subDrink,totalBill,dispatch}}>
