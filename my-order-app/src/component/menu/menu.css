@@ -1,5 +1,5 @@
 
-.coffee{
+.menuDrink{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap:5px;

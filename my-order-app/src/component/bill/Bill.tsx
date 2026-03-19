@@ -1,25 +1,15 @@
 
+import { useContext } from 'react'
 import ListBill from '../listBill/listBill'
 import './Bill.css'
-type billProp={
-    id:string
-    name:string
-    price:number,
-    quantity: number
-}
-type listBillProp={
-    listDrink: billProp[]
-    removeDrink:(value:billProp)=>void
-    //addPrice:(value:number)=>void
-    totalBill:number
-    addDrink: (value: billProp)=>void
-}
+import { CartContext } from '../../Context/CartContext'
 
-export default function Bill({listDrink,removeDrink,totalBill, addDrink}:listBillProp){
-    
-    const listBill=listDrink.map((drink)=>(
+
+export default function Bill(){
+    const {totalBill, listBillReducer}=  useContext(CartContext)!;
+    const listBill=listBillReducer.map((drink)=>(
         <div key={drink.id} >     
-            <ListBill drink={drink} removeDrink={removeDrink} addDrink={addDrink}/>
+            <ListBill drink={drink} />
             <hr/>
         </div> 
     )

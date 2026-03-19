@@ -1,5 +1,7 @@
 //import { useState } from 'react'
+import { useContext } from 'react'
 import './listBill.css'
+import { CartContext } from '../../Context/CartContext'
  type drink={
     
         id:string,
@@ -9,23 +11,18 @@ import './listBill.css'
     }
     type listBillProp={
         drink:drink
-        removeDrink:(value:drink)=>void
-        //addPrice:(value:number)=>void
-        addDrink: (value: drink)=>void
     }
 
-export default function ListBill({drink,removeDrink, addDrink }:listBillProp){
+export default function ListBill({drink }:listBillProp){
+    const { addDrink, subDrink } = useContext(CartContext)!;
    //const [count,setCount]=useState(1)
     function addCount(){
         addDrink(drink);
         //addPrice(drink.price)
     }
      function subCount(){
-        //drink.quantity--;
-        
-       // addPrice(-1*drink.price)
-        //let fakeCount=drink.quantity;
-        removeDrink(drink)
+       
+        subDrink(drink)
     }
     return (
         <div style={

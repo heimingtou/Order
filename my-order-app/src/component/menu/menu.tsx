@@ -7,51 +7,69 @@ import milkTea from "../../Data/milkTea"
 import special from "../../Data/special"
 import esspresso from "../../Data/Esspresso"
 import Drink from "../drink/drink"
-import { useState } from "react"
-type drink={
-        id:string
-        name:string,
-        price: number
-    }
+import {  useState } from "react"
+//import { CartContext } from "../../Context/CartContext"
 
-type menuProp={
-    addDrink:(value:drink)=>void,
-    //addPrice:(value:number)=>void
-
-}
-export default function Menu({addDrink}:menuProp){
+export default function Menu(){
     const [text,setText]=useState('');
-    const listCoffe=coffee.map((myMenu,index)=>{
-         if(myMenu.name.toLowerCase().indexOf(text.toLowerCase())==-1)
-            return;
-        return <Drink key={index} menu={myMenu} addDrink={addDrink}  />
-    })
-    const listJuice=juice.map((myMenu,index)=>{
-         if(myMenu.name.toLowerCase().indexOf(text.toLowerCase())==-1)
-            return;
-        return <Drink key={index} menu={myMenu} addDrink={addDrink}/>
-    })
-    const listEsspresso=esspresso.map((myMenu,index)=>{
-         if(myMenu.name.toLowerCase().indexOf(text.toLowerCase())==-1)
-            return;
-        return <Drink key={index} menu={myMenu} addDrink={addDrink} />
-    })
-    const listMilktea=milkTea.map((myMenu,index)=>{
-         if(myMenu.name.toLowerCase().indexOf(text.toLowerCase())==-1)
-            return;
-        return <Drink key={index} menu={myMenu} addDrink={addDrink} />
-    })
-    const listSpecial=special.map((myMenu,index)=>{
-         if(myMenu.name.toLowerCase().indexOf(text.toLowerCase())==-1)
-            return;
-        return <Drink key={index} menu={myMenu} addDrink={addDrink}/>
-    })
+    //const {addDrink}= useContext(CartContext)!
+    const categories=[
+        {id: "coffee", title: "Coffe", data: coffee},
+        {id: "juice", title: "Juice", data: juice},
+        {id: "milk-tea", title: "Milk Tea", data: milkTea},
+        {id: "special", title: "Special", data: special},
+        {id: "esspresso", title: "Esspresso", data: esspresso},
+    ]
+    // const listCoffe=coffee.map((myMenu,index)=>{
+    //      if(myMenu.name.toLowerCase().indexOf(text.toLowerCase())==-1)
+    //         return;
+    //     return <Drink key={index} menu={myMenu}   />
+    // })
+    // const listJuice=juice.map((myMenu,index)=>{
+    //      if(myMenu.name.toLowerCase().indexOf(text.toLowerCase())==-1)
+    //         return;
+    //     return <Drink key={index} menu={myMenu} />
+    // })
+    // const listEsspresso=esspresso.map((myMenu,index)=>{
+    //      if(myMenu.name.toLowerCase().indexOf(text.toLowerCase())==-1)
+    //         return;
+    //     return <Drink key={index} menu={myMenu}  />
+    // })
+    // const listMilktea=milkTea.map((myMenu,index)=>{
+    //      if(myMenu.name.toLowerCase().indexOf(text.toLowerCase())==-1)
+    //         return;
+    //     return <Drink key={index} menu={myMenu}  />
+    // })
+    // const listSpecial=special.map((myMenu,index)=>{
+    //      if(myMenu.name.toLowerCase().indexOf(text.toLowerCase())==-1)
+    //         return;
+    //     return <Drink key={index} menu={myMenu} />
+    // })
     
 
     return (
         <>
         <input placeholder="search drink" type="text" onChange={(e)=>{setText(e.target.value)}}></input>
-        < div id="coffee">
+        {
+            categories.map((cat)=>(
+                <div id={cat.id} key={cat.id} >
+                    <h1>{cat.title}</h1>
+                    <div className="menuDrink" >
+                        {
+                            cat.data
+                            .filter(item => item.name.toLowerCase().includes(text.toLowerCase()))
+                            .map((myMenu, index) => (
+                                <Drink key={index} menu={myMenu} />
+                            ))
+                        }
+                    </div>
+                </div>
+
+            ))
+        }
+        
+        
+        {/* < div id="coffee">
             <h1>Coffe</h1>
             <div className="coffee">
             {listCoffe}
@@ -84,7 +102,7 @@ export default function Menu({addDrink}:menuProp){
             <div className="coffee">
             {listSpecial}
             </div>
-        </div>
+        </div> */}
 
         </>
     )

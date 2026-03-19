@@ -12,3 +12,6 @@
     background-color: #4B4453;
     color: #B0A8B9;
 }
+#coffee, #juice, #esspresso, #milk-tea, #special {
+    scroll-margin-top: 60px; /* Thay 100px bằng chiều cao Navbar của bạn + 20px dự phòng */
+}

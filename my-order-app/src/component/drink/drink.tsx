@@ -1,16 +1,19 @@
+import { useContext } from 'react'
 import './drink.css'
+import { CartContext } from '../../Context/CartContext'
 type drink={
         id:string,
         name:string,
         price: number
     }
 type drinkProp={
-    addDrink:(value:drink)=>void,
+   // addDrink:(value:drink)=>void,
     menu:drink
     //addPrice:(value:number)=>void
 }
 
-export default function Drink({menu, addDrink}:drinkProp){
+export default function Drink({menu}:drinkProp){
+    const {addDrink}= useContext(CartContext)!
     function add(){
         addDrink(menu)
         //addPrice(menu.price)
