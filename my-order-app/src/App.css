@@ -1,5 +1,6 @@
 #root {
-  max-width: 1280px;
+  
+  width:1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -11,14 +12,46 @@
   will-change: filter;
   transition: filter 300ms;
 }
-.contain{
-  display: flex;
-  flex-direction: row;
-  gap:10px;
+.contain {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;           /* Khoảng cách giữa Menu và Bill */
+    padding: 20px;
+    align-items: flex-start; /* Quan trọng để sticky hoạt động */
+    justify-content: center;
+}
+
+/* Phần bên trái (Menu hoặc Grid chọn Bàn) */
+.contain > div:first-child {
+    flex: 1;             /* Chiếm hết phần không gian còn lại */
+    min-width: 300px;    /* Không để nó quá bé */
+}
+
+/* Phần bên phải (Chứa cái Bill) */
+.contain > div:last-child {
+    flex: 0 0 22rem;     /* Giữ độ rộng cố định quanh 22rem */
+}
+/* Giao diện cho Máy tính (Màn hình từ 768px trở lên) */
+@media (min-width: 768px) {
+    .contain {
+        flex-direction: row; /* Xếp hàng ngang */
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+
+    .contain > div:first-child {
+        flex: 2; /* Menu chiếm 2 phần chiều rộng */
+    }
+
+    .contain > div:last-child {
+        flex: 1; /* Bill chiếm 1 phần chiều rộng */
+        position: sticky; /* Giữ Bill cố định khi cuộn Menu */
+        top: 100px;
+    }
 }
 .navv{
   position: fixed;
-  right: 1rem;
+  right: 0.5rem;
   top:5px;
   width: 100%;
 }

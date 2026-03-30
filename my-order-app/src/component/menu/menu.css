@@ -1,11 +1,29 @@
 
-.menuDrink{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap:5px;
-}
+
 input{
     margin-top: 5rem;
     width: 35rem;
     height: 2rem;
+}
+.menuDrink {
+    display: grid;
+    /* Mặc định cho mobile: 3 cột */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 5px;
+}
+
+/* Tablet và màn hình nhỏ: giữ 3-4 cột */
+@media (min-width: 768px) {
+    .menuDrink {
+        /* minmax giúp ô không bị quá bé, 1fr giúp nó giãn đều */
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+}
+
+/* Desktop: Khống chế tối đa 5 cột */
+@media (min-width: 1200px) {
+    .menuDrink {
+        /* Ép đúng 5 cột trên màn hình lớn */
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
