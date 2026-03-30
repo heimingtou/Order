@@ -1,0 +1,7 @@
+
+.bill-Contain{
+    display: grid;
+    /* Cột rộng tối thiểu 100px, nếu còn chỗ thì tự chia đều */
+    grid-template-columns: repeat(3, 1fr);; 
+    gap: 4px;
+}

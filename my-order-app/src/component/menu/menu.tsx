@@ -20,33 +20,6 @@ export default function Menu(){
         {id: "special", title: "Special", data: special},
         {id: "esspresso", title: "Esspresso", data: esspresso},
     ]
-    // const listCoffe=coffee.map((myMenu,index)=>{
-    //      if(myMenu.name.toLowerCase().indexOf(text.toLowerCase())==-1)
-    //         return;
-    //     return <Drink key={index} menu={myMenu}   />
-    // })
-    // const listJuice=juice.map((myMenu,index)=>{
-    //      if(myMenu.name.toLowerCase().indexOf(text.toLowerCase())==-1)
-    //         return;
-    //     return <Drink key={index} menu={myMenu} />
-    // })
-    // const listEsspresso=esspresso.map((myMenu,index)=>{
-    //      if(myMenu.name.toLowerCase().indexOf(text.toLowerCase())==-1)
-    //         return;
-    //     return <Drink key={index} menu={myMenu}  />
-    // })
-    // const listMilktea=milkTea.map((myMenu,index)=>{
-    //      if(myMenu.name.toLowerCase().indexOf(text.toLowerCase())==-1)
-    //         return;
-    //     return <Drink key={index} menu={myMenu}  />
-    // })
-    // const listSpecial=special.map((myMenu,index)=>{
-    //      if(myMenu.name.toLowerCase().indexOf(text.toLowerCase())==-1)
-    //         return;
-    //     return <Drink key={index} menu={myMenu} />
-    // })
-    
-
     return (
         <>
         <input placeholder="search drink" type="text" onChange={(e)=>{setText(e.target.value)}}></input>
@@ -67,43 +40,6 @@ export default function Menu(){
 
             ))
         }
-        
-        
-        {/* < div id="coffee">
-            <h1>Coffe</h1>
-            <div className="coffee">
-            {listCoffe}
-            </div>
-           
-        </div>
-         < div id="juice">
-            <h1>Juice</h1>
-            <div className="coffee">
-            {listJuice}
-            </div>
-           
-        </div>
-         < div id="esspresso">
-            <h1>Esspreso</h1>
-            <div className="coffee">
-           {listEsspresso}
-            </div>
-           
-        </div>
-         < div id="milk-tea">
-            <h1>Milk tea</h1>
-            <div className="coffee">
-            {listMilktea}
-            </div>
-           
-        </div>
-        < div id="special">
-            <h1>special</h1>
-            <div className="coffee">
-            {listSpecial}
-            </div>
-        </div> */}
-
         </>
     )
 }

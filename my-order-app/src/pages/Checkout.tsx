@@ -1,26 +1,34 @@
 import { useContext } from 'react';
 import { CartContext } from '../Context/CartContext';
 import { useNavigate } from 'react-router-dom';
-
+import './Checkout.css'
+type billProp = { id: string; name: string; price: number; quantity: number };
 export default function Checkout() {
-  const { listHistoryBill } = useContext(CartContext)!;
+  const { listHistoryBill, dispatch, dispatchHistory } = useContext(CartContext)!;
   const navigate = useNavigate();
   const ListBill=listHistoryBill.map((bill)=>(
-    <div>
-       <h1>{bill.nameTable}</h1>
-     <div style={{ background: '#333', padding: '20px', borderRadius: '10px' }}>
+     <div key={bill.id} style={{ background: '#333',display: 'flex', flexDirection: 'column', padding: '20px', borderRadius: '10px', width:'18rem' }}>
+      <h1>Table {bill.nameTable}</h1>
         {bill.listDrink.map(item => (
           <div key={item.id} style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #444' }}>
             <p>{item.name} x {item.quantity}</p>
             <p>{(item.price * item.quantity).toLocaleString()}đ</p>
           </div>
         ))}
-        <h2 style={{ color: 'orange' }}>Tổng cộng: {listHistoryBill[0].totalBill}đ</h2>
+        
+        <h2 style={{ color: 'orange', marginTop: 'auto' }}>Tổng cộng: {bill.totalBill}đ</h2>
+        <button style={{width:'10rem',alignSelf: 'center',}} onClick={()=>FixDrink(bill.id, bill.listDrink)}>chinh sua </button>
+        
       </div> 
-    </div>
+  )
+  )
+  function FixDrink(id:string, bill:billProp[]){
+    dispatchHistory({ type: "DeleteBill", payload: id })
+    navigate("/")
+    dispatch({type:"SET-CART", payload:bill})
    
-  )
-  )
+    
+  }
   return (
     <div style={{ padding: '40px', color: 'white', textAlign: 'center' }}>
        <button 
@@ -29,29 +37,9 @@ export default function Checkout() {
       >
         ⬅ Quay lại Menu
       </button>
+      <div className='bill-Contain'> 
       {ListBill}
-      {/* <h1>{listHistoryBill[0].nameTable}</h1>
-      <div style={{ background: '#333', padding: '20px', borderRadius: '10px' }}>
-        {listHistoryBill[0].listDrink.map(item => (
-          <div key={item.id} style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #444' }}>
-            <p>{item.name} x {item.quantity}</p>
-            <p>{(item.price * item.quantity).toLocaleString()}đ</p>
-          </div>
-        ))}
-        <h2 style={{ color: 'orange' }}>Tổng cộng: {listHistoryBill[0].totalBill}đ</h2>
-      </div>  */}
-      {/* <h1>📝 Chi tiết đơn hàng</h1>
-     
-
-      <div style={{ background: '#333', padding: '20px', borderRadius: '10px' }}>
-        {listBillReducer.map(item => (
-          <div key={item.id} style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #444' }}>
-            <p>{item.name} x {item.quantity}</p>
-            <p>{(item.price * item.quantity).toLocaleString()}đ</p>
-          </div>
-        ))}
-        <h2 style={{ color: 'orange' }}>Tổng cộng: {totalBill.toLocaleString()}đ</h2>
-      </div> */}
+     </div>
     </div>
   );
 }

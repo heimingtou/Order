@@ -4,7 +4,7 @@
     top: 2rem; /* Khoảng cách từ mép trên màn hình khi nó bắt đầu dính */
     
     /* Độ rộng co giãn */
-   min-width: 280px; /* Đảm bảo đủ chỗ cho nút +, -, tên món và giá */
+   min-width: 350px; /* Đảm bảo đủ chỗ cho nút +, -, tên món và giá */
     width: 100%; 
     max-width: 350px; /* Giới hạn độ rộng để không quá to */
     

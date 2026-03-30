@@ -17,6 +17,7 @@ type CartContextType = {
   listHistoryBill: historyBill[];
   totalBill: number;
   dispatch: React.Dispatch<Action>;
+  dispatchHistory: React.Dispatch<Action>;
   addDrink: (drink: drink) => void;
   subDrink: (drink: billProp) => void;
   saveOrder: (nameTable: string) => void; // Phải có ở đây để bên ngoài gọi được
@@ -26,8 +27,10 @@ type Action =
   | { type: "ADD"; payload: billProp }
   | { type: "SUB"; payload: billProp }
   | { type: "REMOVE"; payload: string }
+  | {type: "SET-CART"; payload: billProp[]}
   | { type: "CLEAR" }
-  | { type: "SAVE_TO_HISTORY"; payload: historyBill };
+  | { type: "SAVE_TO_HISTORY"; payload: historyBill }
+  | {type: "DeleteBill"; payload: string}
 
 export const CartContext = createContext<CartContextType | undefined>(undefined);
 
@@ -49,6 +52,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
     switch (action.type) {
       case "SAVE_TO_HISTORY":
         return [action.payload, ...state];
+      case "DeleteBill":
+        return state.filter(bill => bill.id !== action.payload);
       default:
         return state;
     }
@@ -76,6 +81,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
       }
       case "CLEAR":
         return [];
+      case "SET-CART":
+        return action.payload;
       default:
         return state;
     }
@@ -128,6 +135,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
         listHistoryBill, // Nhớ đưa vào đây
         totalBill,
         dispatch,
+        dispatchHistory,
         addDrink,
         subDrink,
         saveOrder, // Nhớ đưa vào đây
