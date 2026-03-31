@@ -2,14 +2,14 @@
     display: flex;
     align-items: center;
     justify-content:space-between;
-    background-color: #4B4453;
+    background-color: #9B3922;
     width: 100%;
     height: 2.7rem;
     position: fixed;
     top:5px;
 }
 .btn{
-    background-color: #4B4453;
+    background-color: #9B3922;
     color: #B0A8B9;
 }
 #coffee, #juice, #esspresso, #milk-tea, #special {
